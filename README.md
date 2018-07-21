@@ -165,10 +165,7 @@ insert  into `order_detail`(`order_detail_id`,`order_id`,`estimated_fare`,`car_i
 
 ```
 
-# insert a record
-```
-INSERT INTO employees (ID,NAME,RANK,ADDRESS,SALARY,BDAY) VALUES (4, 'Jasmine', 5, '983 Star Ave., Brooklyn, NY, 00912 ', 55700.00, '1997-12-13' ), (5, 'Orranda', 9, '745 Hammer Lane, Hammerfield, Texas, 75839', 65350.00 , '1992-12-13');
-```
+
 
 ### Installing
 
