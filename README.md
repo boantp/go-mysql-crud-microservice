@@ -1,6 +1,6 @@
-# Go API E-comm
+# Go API Rent Car
 
-Build API with golang for e-comm process
+Build API with golang for simple rent car
 
 ## Built With
 
