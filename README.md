@@ -13,7 +13,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-First you need to prepare the database at you server
+First you need to prepare the database at you server and change the connection in folder config/db.go
 
 #  create database
 ```

@@ -12,6 +12,12 @@ type Car struct {
 	CarStatus    int
 }
 
+type responseData struct {
+	RespCode string
+	RespDesc string
+	Data     []Car
+}
+
 func AllCars() ([]Car, error) {
 	rows, err := config.DB.Query("SELECT * FROM car")
 	if err != nil {

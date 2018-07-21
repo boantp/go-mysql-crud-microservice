@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	_ "github.com/boantp/go-api-ecomm/car"
+	"github.com/boantp/go-api-ecomm/car"
 )
 
 func main() {

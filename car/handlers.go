@@ -17,8 +17,9 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
 		return
 	}
+	d := responseData{RespCode: http.StatusText(200), RespDesc: "success", Data: cars}
 
-	uj, err := json.Marshal(cars)
+	uj, err := json.Marshal(d)
 	if err != nil {
 		fmt.Println(err)
 	}

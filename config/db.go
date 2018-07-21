@@ -11,7 +11,7 @@ var DB *sql.DB
 
 func init() {
 	var err error
-	DB, err = sql.Open("mysql", "root:pasaribu@/boan")
+	DB, err = sql.Open("mysql", "root:pasaribu@/rent_car")
 	if err != nil {
 		panic(err)
 	}
