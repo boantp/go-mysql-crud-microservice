@@ -21,6 +21,14 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`rent_car` /*!40100 DEFAULT CHARACTER SE
 ```
 
 # create table
+
+* customer
+* car
+* car_detail
+* car_type
+* order
+* order_detail
+
 ```
 USE `rent_car`;
 
