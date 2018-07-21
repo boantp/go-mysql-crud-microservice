@@ -4,8 +4,8 @@ Build API with golang for e-comm process
 
 ## Built With
 
-* [Golang](https://godoc.org/) - The web framework used
-* [MySQL](https://godoc.org/github.com/go-sql-driver/mysql) - Dependency Management
+* [Golang](https://godoc.org/) - open source programming language 
+* [MySQL](https://godoc.org/github.com/go-sql-driver/mysql) - Golang Package mysql
 
 ## Getting Started
 
@@ -32,20 +32,25 @@ CREATE TABLE employees (
 );
 ```
 
+# insert a record
+```
+INSERT INTO employees (ID,NAME,RANK,ADDRESS,SALARY,BDAY) VALUES (4, 'Jasmine', 5, '983 Star Ave., Brooklyn, NY, 00912 ', 55700.00, '1997-12-13' ), (5, 'Orranda', 9, '745 Hammer Lane, Hammerfield, Texas, 75839', 65350.00 , '1992-12-13');
+```
+
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+After we already set the database now we prepare to running the server and try following routes to test the code
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+running the server : go to the project folder from your cmd and running
 
 ```
-until finished
+go run main.go
+```
+
+And now you go to your localhost with your browser
+
+```
+http://localhost:8080
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
@@ -69,13 +74,3 @@ Explain what these tests test and why
 ```
 Give an example
 ```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
