@@ -17,7 +17,7 @@ First you need to prepare the database at you server
 
 #  create database
 ```
-CREATE DATABASE employees;
+CREATE DATABASE ecommerce;
 ```
 
 # create table
