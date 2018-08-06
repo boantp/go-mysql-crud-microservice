@@ -51,7 +51,7 @@ func OneCar(r *http.Request) (Car, error) {
 		return car, errors.New("400. Bad Request.")
 	}
 
-	row := config.DB.QueryRow("SELECT * FROM books WHERE car_id = $1", carid)
+	row := config.DB.QueryRow("SELECT * FROM car WHERE car_id = $1", carid)
 
 	err := row.Scan(&car.CarId, &car.CarName, &car.CarYear, &car.DefaultPrice)
 	if err != nil {
