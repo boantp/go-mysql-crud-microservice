@@ -3,7 +3,6 @@ package main
 import (
 	"net/http"
 
-	"github.com/julienschmidt/httprouter"
 	//package car
 	"github.com/boantp/go-api-ecomm/car"
 	//package order
@@ -24,12 +23,6 @@ func main() {
 	http.HandleFunc("/order", order.Index)
 	http.HandleFunc("/order/update", order.Update)
 	http.ListenAndServe(":8080", nil)
-
-	//REST API
-	r := httprouter.New()
-	// added route
-	r.POST("/order", order.SubmitOrder)
-	http.ListenAndServe("localhost:8080", r)
 }
 
 func index(w http.ResponseWriter, r *http.Request) {

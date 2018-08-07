@@ -1,15 +1,11 @@
-# Go API Rent Car
+# Go MYSQL CRUD
 
-Build API with golang for simple rent car
+Build Simple CRUD with go + mysql
 
 ## Built With
 
 * [Golang](https://godoc.org/) - open source programming language 
 * [MySQL](https://godoc.org/github.com/go-sql-driver/mysql) - Golang Package mysql
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
@@ -109,24 +105,10 @@ And now you go to your localhost with your browser
 http://localhost:8080
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
 ```
-Give an example
+http://localhost:8080/book
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
 ```
-Give an example
+http://localhost:8080/order
 ```

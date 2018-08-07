@@ -2,14 +2,10 @@ package order
 
 import (
 	"database/sql"
-	"encoding/json"
-	"fmt"
 	"net/http"
 
 	"github.com/boantp/go-api-ecomm/car"
 	"github.com/boantp/go-api-ecomm/config"
-	"github.com/golang-web-dev/042_mongodb/02_json/models"
-	"github.com/julienschmidt/httprouter"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
@@ -91,23 +87,4 @@ func UpdateProcess(w http.ResponseWriter, r *http.Request) {
 	}
 
 	config.TPL.ExecuteTemplate(w, "updated.gohtml", cars)
-}
-
-func submitOrder(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	// composite literal - type and curly braces
-	u := models.User{}
-
-	// encode/decode for sending/receiving JSON to/from a stream
-	json.NewDecoder(r.Body).Decode(&u)
-
-	// Change Id
-	u.Id = "007"
-
-	// marshal/unmarshal for having JSON assigned to a variable
-	uj, _ := json.Marshal(u)
-
-	// Write content-type, statuscode, payload
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated) // 201
-	fmt.Fprintf(w, "%s\n", uj)
 }
