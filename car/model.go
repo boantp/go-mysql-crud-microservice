@@ -16,6 +16,7 @@ type Car struct {
 	CarStatus    int
 }
 
+//if we want to give json reponses
 type responseData struct {
 	RespCode string
 	RespDesc string
@@ -51,9 +52,9 @@ func OneCar(r *http.Request) (Car, error) {
 		return car, errors.New("400. Bad Request.")
 	}
 
-	row := config.DB.QueryRow("SELECT * FROM car WHERE car_id = $1", carid)
+	row := config.DB.QueryRow("SELECT * FROM car WHERE car_id=?", carid)
 
-	err := row.Scan(&car.CarId, &car.CarName, &car.CarYear, &car.DefaultPrice)
+	err := row.Scan(&car.CarId, &car.CarName, &car.CarYear, &car.DefaultPrice, &car.CarStatus)
 	if err != nil {
 		return car, err
 	}
@@ -82,7 +83,12 @@ func PutCar(r *http.Request) (Car, error) {
 	car.DefaultPrice = float32(f64)
 
 	// insert values
-	_, err = config.DB.Exec("INSERT INTO car (car_id, car_name, car_year, default_price) VALUES ($1, $2, $3, $4)", car.CarId, car.CarName, car.CarYear, car.DefaultPrice)
+	sqlStr := "INSERT INTO car(car_id, car_name, car_year, default_price, car_status) VALUES (?, ?, ?, ?, ?)"
+	//prepare the statement
+	stmt, _ := config.DB.Prepare(sqlStr)
+
+	//format all vals at once
+	_, err = stmt.Exec(car.CarId, car.CarName, car.CarYear, p, 1)
 	if err != nil {
 		return car, errors.New("500. Internal Server Error." + err.Error())
 	}
@@ -109,7 +115,14 @@ func UpdateCar(r *http.Request) (Car, error) {
 	car.DefaultPrice = float32(f64)
 
 	// insert values
-	_, err = config.DB.Exec("UPDATE car SET car_id = $1, car_name=$2, car_year=$3, default_price=$4 WHERE car_id=$1;", car.CarId, car.CarName, car.CarYear, car.DefaultPrice)
+	sqlStr := "update car set car_id=?, car_name=?, car_year=?, default_price=? WHERE car_id=?"
+	//prepare the statement
+	stmt, dberr := config.DB.Prepare(sqlStr)
+	checkErr(dberr)
+
+	//format all vals at once
+	_, err = stmt.Exec(car.CarId, car.CarName, car.CarYear, p, car.CarId)
+	checkErr(err)
 	if err != nil {
 		return car, err
 	}
@@ -122,9 +135,19 @@ func DeleteCar(r *http.Request) error {
 		return errors.New("400. Bad Request.")
 	}
 
-	_, err := config.DB.Exec("DELETE FROM car WHERE car_id=$1;", carid)
+	stmt, err := config.DB.Prepare("delete from car where car_id=?")
+	checkErr(err)
+
+	_, err = stmt.Exec(carid)
+	checkErr(err)
 	if err != nil {
 		return errors.New("500. Internal Server Error")
 	}
 	return nil
+}
+
+func checkErr(err error) {
+	if err != nil {
+		panic(err)
+	}
 }
