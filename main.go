@@ -2,11 +2,14 @@ package main
 
 import (
 	"net/http"
-
+	//package car
 	"github.com/boantp/go-api-ecomm/car"
+	//package order
+	"github.com/boantp/go-api-ecomm/order"
 )
 
 func main() {
+	//Car package
 	http.HandleFunc("/", index)
 	http.HandleFunc("/cars", car.Index)
 	http.HandleFunc("/cars/show", car.Show)
@@ -15,6 +18,9 @@ func main() {
 	http.HandleFunc("/cars/update", car.Update)
 	http.HandleFunc("/cars/update/process", car.UpdateProcess)
 	http.HandleFunc("/cars/delete/process", car.DeleteProcess)
+	//Order package
+	http.HandleFunc("/order", order.Index)
+	http.HandleFunc("/order/update", order.Update)
 	http.ListenAndServe(":8080", nil)
 }
 

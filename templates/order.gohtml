@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Car</title>
+    <style>
+        html, body, p {
+            padding: 0;
+            border: 0;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: left;
+            height: 100vh;
+        }
+        p {
+            margin-left: 4rem;
+            font-size: 2rem;
+            color: black;
+          }
+        .link {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+{{range .}}
+<p><a href="/cars/show?carid={{.CarId}}">{{.CarId}}</a> - {{.CarName}} - {{.CarYear}} - {{.DefaultPrice}} - <a href="/order/update?carid={{.CarId}}">Rent</a></p>
+{{end}}
+
+<p class="link"><a href="/cars/create">Insert A Car</a></p>
+</body>
+</html>
